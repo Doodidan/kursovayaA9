@@ -19,7 +19,7 @@ bool CCircle::IsInside (double x, double y) {
 	return  (x - m_dCenterX)*(x - m_dCenterX) + (y - m_dCenterY)*(y - m_dCenterY) < m_dRadius*m_dRadius;
 }
 
-void CCircle::Move (double dx, double dy) {
+/*void CCircle::Move (double dx, double dy) {
 	m_dCenterX += dx;
 	m_dCenterY += dy;
-}
+}*/

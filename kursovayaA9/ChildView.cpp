@@ -5,7 +5,8 @@
 #include "stdafx.h"
 #include "kursovayaA9.h"
 #include "ChildView.h"
-// #include "Circle.h"
+#include "Circle.h"
+#include "Square.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -32,6 +33,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
 	ON_COMMAND(ID_NEWCIRCLE, OnNewCircle)
+	ON_COMMAND(ID_NEWSQUARE, OnNewSquare)
 END_MESSAGE_MAP()
 
 
@@ -115,6 +117,13 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 void CChildView::OnNewCircle () {
 	CRect rect;
 	GetClientRect(&rect);
-	m_Objects.push_back(new CCircle(rand() % rect.Width(), rand() % rect.Height(), 10));
+	m_Objects.push_back(new CCircle(20, 20, 30));
+	Invalidate();
+}
+
+void CChildView::OnNewSquare() {
+	CRect rect;
+	GetClientRect(&rect);
+	m_Objects.push_back(new CSquare(20, 20, 30));
 	Invalidate();
 }

@@ -4,7 +4,7 @@
 
 
 #pragma once
-#include "Circle.h"
+#include "GrpObject.h"
 #include <vector>
 
 
@@ -22,7 +22,7 @@ public:
 protected:
 	//CCircle m_Circles;
 	//Now we need an array of circles
-	std::vector<CCircle *> m_Objects;
+	std::vector<CGrpObject *> m_Objects;
 	//bool m_bCatched;
 	int m_nCatched;
 	CPoint m_MousePos;
@@ -50,5 +50,6 @@ public:
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnNewCircle();
+	afx_msg void OnNewSquare();
 };
 

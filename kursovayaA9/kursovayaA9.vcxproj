@@ -103,9 +103,11 @@
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="GrpObject.h" />
     <ClInclude Include="kursovayaA9.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Square.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -114,6 +116,7 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="kursovayaA9.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="Square.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
