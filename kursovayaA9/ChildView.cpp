@@ -117,13 +117,13 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 void CChildView::OnNewCircle () {
 	CRect rect;
 	GetClientRect(&rect);
-	m_Objects.push_back(new CCircle(20, 20, 30));
+	m_Objects.push_back(new CCircle(rand() % rect.Width(), rand() % rect.Height(), 10));
 	Invalidate();
 }
 
 void CChildView::OnNewSquare() {
 	CRect rect;
 	GetClientRect(&rect);
-	m_Objects.push_back(new CSquare(20, 20, 30));
+	m_Objects.push_back(new CSquare(rand() % rect.Width(), rand() % rect.Height(), 10));
 	Invalidate();
 }

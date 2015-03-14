@@ -12,7 +12,7 @@ CCircle::~CCircle (void) {
 }
 
 void CCircle::Draw (CDC &dc) {
-	dc.Ellipse(m_dCenterX - m_dRadius, m_dCenterY - m_dRadius, m_dCenterX + m_dRadius, m_dCenterX + m_dRadius);
+	dc.Ellipse(m_dCenterX - m_dRadius, m_dCenterY - m_dRadius, m_dCenterX + m_dRadius, m_dCenterY + m_dRadius);
 }
 
 bool CCircle::IsInside (double x, double y) {
