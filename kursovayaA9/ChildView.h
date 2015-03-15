@@ -51,5 +51,6 @@ public:
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnNewCircle();
 	afx_msg void OnNewSquare();
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 };
 

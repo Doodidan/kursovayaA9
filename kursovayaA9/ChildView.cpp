@@ -34,11 +34,18 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_MOUSEMOVE()
 	ON_COMMAND(ID_NEWCIRCLE, OnNewCircle)
 	ON_COMMAND(ID_NEWSQUARE, OnNewSquare)
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 
 
 // обработчики сообщений CChildView
+
+BOOL CChildView::OnEraseBkgnd(CDC* pDC) {
+	//Don’t call base class implementation
+	//return CWnd::OnEraseBkgnd(pDC);
+	return true; //Just return true.
+}
 
 BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs) 
 {
@@ -53,15 +60,22 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
 	return TRUE;
 }
 
-void CChildView::OnPaint() 
-{
-	CPaintDC dc(this); // контекст устройства для рисования
-	
-	for (int i = 0; i< m_Objects.size(); i++) {
-		m_Objects[i]->Draw(dc);
+void CChildView::OnPaint()  {
+	CPaintDC dc(this); // device context for drawing
+	CDC dcMem;
+	dcMem.CreateCompatibleDC(&dc);
+	CRect rect;
+	GetClientRect(&rect);
+	CBitmap bmp;
+	bmp.CreateCompatibleBitmap(&dc, rect.Width(), rect.Height());
+	CBitmap *pOldBmp = dcMem.SelectObject(&bmp);
+	dcMem.FillSolidRect(0,0,rect.Width(), rect.Height(), 0xFFFFFF);
+	//0x FFFFFF is similar to RGB(255, 255, 255)
+	for(int i=0; i<m_Objects.size(); i++) {
+		m_Objects[i]->Draw(dcMem);
 	}
-	
-	// Не вызывайте CWnd::OnPaint() для сообщений рисования
+	dc.BitBlt(0,0, rect.Width(), rect.Height(), &dcMem, 0,0,SRCCOPY);
+	dcMem.SelectObject(pOldBmp);
 }
 
 int CChildView::FindObject(CPoint point) {
